@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style for the dropdown menu */
+#yearSelect {
+  padding: 8px 12px;
+  /* Add padding */
+  font-size: 16px;
+  /* Set font size */
+  border: 1px solid #ccc;
+  /* Add border */
+  border-radius: 4px;
+  /* Add border radius */
+  background-color: #f8f8f8;
+  /* Set background color */
+  color: #333;
+  /* Set text color */
+}
+
+/* Style for dropdown menu options */
+#yearSelect option {
+  padding: 8px 12px;
+  /* Add padding */
+  font-size: 16px;
+  /* Set font size */
+  background-color: #fff;
+  /* Set background color */
+  color: #333;
+  /* Set text color */
+}
+
+/* Style for hover effect */
+#yearSelect option:hover {
+  background-color: #f0f0f0;
+  /* Change background color on hover */
+}
