@@ -14,6 +14,13 @@
 <body>
     <div class="top" style="background-color: rgb(255, 255, 255);">
         <div class="con" style="display: flex;align-items: center;justify-content: center;">
+          <div class="col-md-1">
+            <select id="yearSelect">
+              <option value="2020">2024</option>
+              <option value="2021">2023</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
             <div class="col-md-3" class="topitem" style="margin: 1rem;background-color: rgb(247, 247, 251);border-radius: 0.5rem;box-shadow: 4px 4px 2px 1px rgba(124, 124, 224, 0.2);">
                <div class="row">
                 <div class="col-md-6" style="display: flex;align-items: center;justify-self: center">
@@ -60,6 +67,12 @@
                </div>
             </div>
         </div>
+    </div>
+    <div class="row" style="display: flex; align-items: center;justify-content: center;">
+      <div class="col-md-6">
+        <canvas id="salesChart" style="max-height: 50vh;"></canvas>
+      </div>
+      
     </div>
     <div>
       <div class="row" style="margin: 1rem;display: flex; justify-content: center;" >
@@ -148,6 +161,60 @@
                     { field: "items", title: "# Orders" }
                 ],
             });
+        });
+
+        const salesData = [
+            { month: 'January', sales: 1000 },
+            { month: 'February', sales: 1500 },
+            { month: 'March', sales: 2000 },
+            { month: 'April', sales: 1800 },
+            { month: 'May', sales: 2200 },
+            { month: 'June', sales: 2500 },
+            { month: 'July', sales: 3000 },
+            { month: 'August', sales: 2800 },
+            { month: 'September', sales: 2600 },
+            { month: 'October', sales: 2300 },
+            { month: 'November', sales: 1800 },
+            { month: 'December', sales: 1500 }
+        ];
+
+        // Step 2: Format data for Chart.js
+        const labels = salesData.map(item => item.month);
+        const sales = salesData.map(item => item.sales);
+
+        // Step 3: Set up HTML canvas
+        const ctx1 = document.getElementById('salesChart').getContext('2d');
+
+        // Step 4: Initialize Chart.js
+        const salesChart = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Monthly Sales',
+                    data: sales,
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Monthly Sales in Current Year',
+                    fontSize: 16
+                },
+                legend: {
+                    display: false
+                }
+            }
         });
 
 // Example data for the top 4 menu items
@@ -268,6 +335,8 @@ new Chart(ctxDonut, donutChartConfig);
     }
   }
 });
+
+
     </script>
     
 </body>
